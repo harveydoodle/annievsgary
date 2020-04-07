@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { map } from "lodash";
 
-import "../styles/leaderboard.css";
-
+import composedHOC from './leaderboardhoc';
 import UserRanking from "./userranking";
+
+import "../styles/leaderboard.css";
 
 const mockData = {
   1: { id: 1, name: "name1", rank: 1, score: 100 },
@@ -12,7 +13,7 @@ const mockData = {
   4: { id: 4, name: "name4", rank: 3, score: 14 },
 };
 
-class Leaderboard extends Component {
+class LeaderboardComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -21,10 +22,11 @@ class Leaderboard extends Component {
       data: mockData,
     };
   }
+  
   render() {
     const { data } = this.state;
     return (
-      <div className="wrapper">
+      <div className="leaderboard-wrapper">
         <div>Leaderboard</div>
         <div>
           {map(data, (each) => (
@@ -36,4 +38,5 @@ class Leaderboard extends Component {
   }
 }
 
+const Leaderboard = composedHOC(LeaderboardComponent)
 export default Leaderboard;
