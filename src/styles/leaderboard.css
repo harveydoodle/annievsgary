@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  flex: 0;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid black;
+  width: 800px;
+  min-height: 400px;
+}
