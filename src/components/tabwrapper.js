@@ -14,12 +14,13 @@ class Tabs extends Component {
   }
   render() {
     const { data } = this.state;
+    const { handleTabSwitch}=this.props;
     return (
       <div className="tab-wrapper">
         <div>Active tab:</div>
         <div>
           {map(data.tabs, (each) => (
-            <span>{each.name} </span>
+            <span onClick={()=>handleTabSwitch(each.id)}>{each.name} </span>
           ))}
         </div>
       </div>
