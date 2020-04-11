@@ -1,4 +1,13 @@
-.tab-wrapper {
-    border: 1px solid orange;
-  }
-  
+.tabs-wrapper {
+  /* border: 1px solid orange; */
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.individual-tab-wrapper {
+  background-color: pink;
+  display: flex;
+  flex: 1;
+  padding: 10px 20px;
+}

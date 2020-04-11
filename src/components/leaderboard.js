@@ -13,6 +13,11 @@ const LeaderboardComponent = (props) => {
     <div className="leaderboard-wrapper">
       <div>Leaderboard for {tabs[active_tab_id].name}</div>
       <div>
+        <span className="ranking-header">
+          <h2 style={{flex:1}}>Rank</h2>
+          <h2 style={{flex:6}}>Name</h2>
+          <h2 style={{flex:1}}>Top Score</h2>
+        </span>
         {map(scoreData, (each) => (
           <UserRanking {...each} />
         ))}

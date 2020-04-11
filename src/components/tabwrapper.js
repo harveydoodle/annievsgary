@@ -9,20 +9,26 @@ class Tabs extends Component {
 
     this.state = {
       loading: true,
-      data: props.tabData,
     };
   }
+
   render() {
-    const { data } = this.state;
-    const { handleTabSwitch}=this.props;
+    const { handleTabSwitch, tabData } = this.props;
+    const { active_tab_id } = tabData;
     return (
-      <div className="tab-wrapper">
-        <div>Active tab:</div>
-        <div>
-          {map(data.tabs, (each) => (
-            <span onClick={()=>handleTabSwitch(each.id)}>{each.name} </span>
-          ))}
-        </div>
+      <div className="tabs-wrapper">
+        {map(tabData.tabs, (each) => {
+          const isActive = each.id === active_tab_id;
+          return (
+            <span
+              className="individual-tab-wrapper"
+              style={isActive ? { fontWeight: "bold" } : null}
+              onClick={() => handleTabSwitch(each.id)}
+            >
+              {each.name}{" "}
+            </span>
+          );
+        })}
       </div>
     );
   }

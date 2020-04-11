@@ -41,7 +41,7 @@ class LandingPage extends Component {
     const { tabData } = this.state;
     return (
       <div className="landing">
-        <header className="landing-header">header data~</header>
+        <header className="landing-header">Header Text</header>
         <Tabs handleTabSwitch={this.handleTabSwitch} tabData={tabData} />
         <Leaderboard tabData={tabData} />
       </div>
