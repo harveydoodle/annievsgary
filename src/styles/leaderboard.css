@@ -1,13 +1,14 @@
 .leaderboard-wrapper {
   display: flex;
-  flex: 0;
+  flex: 1;
   flex-direction: column;
   text-align: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  background-color: #ffffff;
   box-sizing: border-box;
   width: 800px;
   max-width:100%;
-  min-height: 400px;
+  min-height: 85vh;
   padding: 15px;
 }
 .ranking-header {
@@ -15,4 +16,5 @@
   flex-direction: row;
   flex: 1;
   justify-content: space-between;
+  align-items: center;
 }

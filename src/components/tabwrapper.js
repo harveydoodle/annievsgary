@@ -30,7 +30,7 @@ class Tabs extends Component {
               style={isActive ? { fontWeight: "bold" } : null}
               onClick={() => handleTabSwitch(each.key)}
             >
-              {each.title}{" "}
+              <h3 style={{ margin: 0 }}>{each.title} </h3>
             </span>
           );
         })}

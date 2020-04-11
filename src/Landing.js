@@ -6,6 +6,7 @@ import { extractUrlPath } from "./utils/navigation";
 
 import Leaderboard from "./components/leaderboard";
 import Tabs from "./components/tabwrapper";
+import Modal from "./components/modal";
 
 const mockTabData = {
   active_tab_id: "tetris",
@@ -31,7 +32,7 @@ class LandingPage extends Component {
         active_tab_id: extractUrlPath(location.pathname),
       };
     }
-    this.state = tabData;
+    this.state = { ...tabData, showModal: false };
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -46,6 +47,11 @@ class LandingPage extends Component {
     }
   }
 
+  toggleModal = (val) => {
+    this.setState({
+      showModal: val,
+    });
+  };
   handleTabSwitch = (key) => {
     this.setState(
       (prevState) => {
@@ -61,7 +67,13 @@ class LandingPage extends Component {
     return (
       <div className="landing">
         <Tabs handleTabSwitch={this.handleTabSwitch} tabData={this.state} />
-        <Leaderboard tabData={this.state} />
+        <Leaderboard toggleModal={this.toggleModal} tabData={this.state} />
+        <Modal
+          show={this.state.showModal}
+          handleClose={() => this.toggleModal(false)}
+        >
+          <span>hii</span>
+        </Modal>
       </div>
     );
   }

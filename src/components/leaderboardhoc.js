@@ -27,10 +27,11 @@ function withComponentAPI(WrappedComponent) {
 
     render() {
       const { scoreData } = this.state;
-      const { tabData } = this.props;
+      const { tabData, toggleModal } = this.props;
       const passedProps = {
         scoreData,
         tabData,
+        toggleModal,
       };
       return <WrappedComponent {...passedProps} />;
     }
