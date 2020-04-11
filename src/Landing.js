@@ -34,6 +34,19 @@ class LandingPage extends Component {
     this.state = tabData;
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      extractUrlPath(this.props.location.pathname) &&
+      extractUrlPath(this.props.location.pathname) !==
+        this.state.active_tab_id
+    ) {
+      let active_tab_id = extractUrlPath(this.props.location.pathname);
+      this.setState({
+        active_tab_id,
+      });
+    }
+  }
+
   handleTabSwitch = (id) => {
     this.setState(
       (prevState) => {
@@ -48,7 +61,6 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="landing">
-        <header className="landing-header">Header Text</header>
         <Tabs handleTabSwitch={this.handleTabSwitch} tabData={this.state} />
         <Leaderboard tabData={this.state} />
       </div>
