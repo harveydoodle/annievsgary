@@ -18,8 +18,10 @@ const LeaderboardComponent = (props) => {
           <h2 style={{flex:6}}>Name</h2>
           <h2 style={{flex:1}}>Top Score</h2>
         </span>
-        {map(scoreData, (each) => (
-          <UserRanking {...each} />
+        {map(scoreData, (each, id) => (
+          <span key={id}>
+            <UserRanking {...each} />
+          </span>
         ))}
       </div>
     </div>

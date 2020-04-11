@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./styles/landing.css";
 
+import { extractUrlPath } from "./utils/navigation";
+
 import Leaderboard from "./components/leaderboard";
 import Tabs from "./components/tabwrapper";
 
@@ -17,33 +19,38 @@ const mockTabData = {
 class LandingPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tabData: mockTabData,
-    };
+    const { location } = props;
+    // TODO: refactor out
+    let tabData = mockTabData;
+    if (
+      extractUrlPath(location.pathname) &&
+      extractUrlPath(location.pathname) !== mockTabData.active_tab_id
+    ) {
+      tabData = {
+        ...mockTabData,
+        active_tab_id: extractUrlPath(location.pathname),
+      };
+    }
+    this.state = tabData;
   }
 
   handleTabSwitch = (id) => {
     this.setState(
       (prevState) => {
-        return {
-          tabData: { ...prevState.tabData, active_tab_id: id },
-        };
+        return { ...prevState, active_tab_id: id };
       },
       () => {
-        this.props.history.push({
-          state: { view: id },
-        });
+        this.props.history.push(`/${id}`);
       }
     );
   };
 
   render() {
-    const { tabData } = this.state;
     return (
       <div className="landing">
         <header className="landing-header">Header Text</header>
-        <Tabs handleTabSwitch={this.handleTabSwitch} tabData={tabData} />
-        <Leaderboard tabData={tabData} />
+        <Tabs handleTabSwitch={this.handleTabSwitch} tabData={this.state} />
+        <Leaderboard tabData={this.state} />
       </div>
     );
   }

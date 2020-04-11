@@ -21,6 +21,7 @@ class Tabs extends Component {
           const isActive = each.id === active_tab_id;
           return (
             <span
+              key={each.id}
               className="individual-tab-wrapper"
               style={isActive ? { fontWeight: "bold" } : null}
               onClick={() => handleTabSwitch(each.id)}
