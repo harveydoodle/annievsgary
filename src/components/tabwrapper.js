@@ -17,16 +17,20 @@ class Tabs extends Component {
     const { active_tab_id } = tabData;
     return (
       <div className="tabs-wrapper">
-        {map(tabData.tabs, (each) => {
-          const isActive = each.id === active_tab_id;
+        {map(tabData.tabs, (each, id, index) => {
+          const isActive = each.key === active_tab_id;
+          const isLeftEdge = each.id === 1;
+          const isRightEdge = each.id === Object.keys(tabData.tabs).length;
           return (
             <span
               key={each.id}
-              className="individual-tab-wrapper"
+              className={`individual-tab-wrapper ${
+                isLeftEdge && "tab-left-edge"
+              } ${isRightEdge && "tab-right-edge"} `}
               style={isActive ? { fontWeight: "bold" } : null}
-              onClick={() => handleTabSwitch(each.id)}
+              onClick={() => handleTabSwitch(each.key)}
             >
-              {each.name}{" "}
+              {each.title}{" "}
             </span>
           );
         })}

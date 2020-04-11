@@ -10,9 +10,9 @@ import Tabs from "./components/tabwrapper";
 const mockTabData = {
   active_tab_id: "tetris",
   tabs: {
-    puyo: { id: "puyo", name: "puyo puyo" },
-    tetris: { id: "tetris", name: "tetris battle" },
-    skribbl: { id: "skribbl", name: "skribbl.io" },
+    puyo: { id: 1, key: "puyo", title: "puyo puyo" },
+    tetris: { id: 2, key: "tetris", title: "tetris battle" },
+    skribbl: { id: 3, key: "skribbl", title: "skribbl.io" },
   },
 };
 
@@ -37,8 +37,7 @@ class LandingPage extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (
       extractUrlPath(this.props.location.pathname) &&
-      extractUrlPath(this.props.location.pathname) !==
-        this.state.active_tab_id
+      extractUrlPath(this.props.location.pathname) !== this.state.active_tab_id
     ) {
       let active_tab_id = extractUrlPath(this.props.location.pathname);
       this.setState({
@@ -47,13 +46,13 @@ class LandingPage extends Component {
     }
   }
 
-  handleTabSwitch = (id) => {
+  handleTabSwitch = (key) => {
     this.setState(
       (prevState) => {
-        return { ...prevState, active_tab_id: id };
+        return { ...prevState, active_tab_id: key };
       },
       () => {
-        this.props.history.push(`/${id}`);
+        this.props.history.push(`/${key}`);
       }
     );
   };
