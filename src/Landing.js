@@ -47,7 +47,7 @@ class LandingPage extends Component {
     }
   }
 
-  toggleModal = val => {
+  toggleModal = (val) => {
     this.setState({
       showModal: val,
     });
@@ -63,7 +63,9 @@ class LandingPage extends Component {
       }
     );
   };
-
+  handleAddScore = (data) => {
+    this.toggleModal(false)
+  };
   render() {
     return (
       <div className="landing">
@@ -72,9 +74,8 @@ class LandingPage extends Component {
         <Modal
           show={this.state.showModal}
           handleClose={() => this.toggleModal(false)}
-        >
-          <span>hii</span>
-        </Modal>
+          handleSubmit={(data) => this.handleAddScore(data)}
+        />
       </div>
     );
   }
