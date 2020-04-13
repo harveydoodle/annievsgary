@@ -22,7 +22,7 @@ const LeaderboardComponent = (props) => {
             <UserRanking {...each} />
           </span>
         ))}
-        <span onClick={() => props.toggleModal(true, 'NEW_SCORE')}>
+        <span onClick={() => props.toggleModal(true)}>
           Add a new score
         </span>
       </div>

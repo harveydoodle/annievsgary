@@ -47,10 +47,9 @@ class LandingPage extends Component {
     }
   }
 
-  toggleModal = (val, modalType) => {
+  toggleModal = val => {
     this.setState({
       showModal: val,
-      modalType,
     });
   };
 
@@ -71,7 +70,6 @@ class LandingPage extends Component {
         <Tabs handleTabSwitch={this.handleTabSwitch} tabData={this.state} />
         <Leaderboard toggleModal={this.toggleModal} tabData={this.state} />
         <Modal
-          type={this.state.modalType}
           show={this.state.showModal}
           handleClose={() => this.toggleModal(false)}
         >
