@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
+
 import "./styles/landing.css";
 
 import { extractUrlPath } from "./utils/navigation";
@@ -64,7 +66,20 @@ class LandingPage extends Component {
     );
   };
   handleAddScore = (data) => {
-    this.toggleModal(false)
+    this.toggleModal(false);
+    axios
+      .get("http://localhost:3002/")
+      .then(function (response) {
+        // handle success
+        console.log('res::',response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log('err',error);
+      })
+      .then(function () {
+        // always executed
+      });
   };
   render() {
     return (
