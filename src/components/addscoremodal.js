@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import TextInput from "./textinput";
+import Dropdown from "./dropdown";
 
 import "../styles/addscoremodal.css";
 
@@ -22,17 +23,13 @@ const AddScoreModal = ({ handleClose, show, handleSubmit }) => {
         </a>
         <form onSubmit={onSubmit} className="form">
           <p>ADD NEW SCORE</p>
-          <select
+          <Dropdown
             id="types"
             value={type}
-            onChange={(e) => {
-              setType(e.target.value);
+            onChange={(value) => {
+              setType(value);
             }}
-          >
-            <option value="Puyo">Puyo</option>
-            <option value="Tetris">Tetris</option>
-            <option value="Skribbl">Skribbl</option>
-          </select>
+          />
           <TextInput value={username} onChange={(val) => setUsername(val)} />
           <TextInput value={score} onChange={(val) => setScore(val)} />
           <input type="submit" value="Submit" />
