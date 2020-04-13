@@ -8,7 +8,7 @@ import { extractUrlPath } from "./utils/navigation";
 
 import Leaderboard from "./components/leaderboard";
 import Tabs from "./components/tabwrapper";
-import Modal from "./components/modal";
+import Modal from "./components/addscoremodal";
 
 const mockTabData = {
   active_tab_id: "tetris",
