@@ -6,10 +6,10 @@
   /* border: 1px solid black; */
   background-color: #ffffff;
   box-sizing: border-box;
-  width: 800px;
+  width: 820px;
   max-width:100%;
   min-height: 85vh;
-  padding: 15px;
+  padding: 50px;
 }
 .ranking-header {
   display: flex;
@@ -17,4 +17,5 @@
   flex: 1;
   justify-content: space-between;
   align-items: center;
+  max-width:100%;
 }

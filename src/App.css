@@ -1,3 +1,7 @@
+:root {
+  font-size: 16px;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -35,4 +39,31 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 10px 0;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+
+h2 {
+  font-size: 1.75rem;
+}
+
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+span {
+  font-size: 1.25rem;
 }

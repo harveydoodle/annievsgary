@@ -68,7 +68,7 @@ class LandingPage extends Component {
   handleAddScore = (data) => {
     this.toggleModal(false);
     axios
-      .get("http://localhost:3002/")
+      .get("http://localhost:3000/")
       .then(function (response) {
         // handle success
         console.log('res::',response);

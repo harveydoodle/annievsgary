@@ -3,13 +3,13 @@
   display: flex;
   flex: 0;
   flex-direction: row;
-  width: 800px;
+  width: 820px;
   max-width:100%;
   border-radius: 20px;
 }
 
 .individual-tab-wrapper {
-  background-color: palegoldenrod;
+  background-color: paleturquoise;
   display: flex;
   flex: 1;
   justify-content: center;
