@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const http = require("http");
+const socketIo = require("socket.io")
 
 app.use(express.urlencoded());
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded());
+
+const server = http.createServer(app);
+const io = socketIo(server);
 
 const scores = [
   {
@@ -13,7 +17,7 @@ const scores = [
     username: "user1",
     rank: 1,
     score: 100,
-    type: 'tetris',
+    type: "tetris",
     date_created: null,
     date_updated: null,
   },
@@ -22,7 +26,7 @@ const scores = [
     username: "user2",
     rank: 2,
     score: 90,
-    type: 'tetris',
+    type: "tetris",
     date_created: null,
     date_updated: null,
   },
@@ -31,7 +35,7 @@ const scores = [
     username: "user3",
     rank: 3,
     score: 80,
-    type: 'tetris',
+    type: "tetris",
     date_created: null,
     date_updated: null,
   },
@@ -40,7 +44,7 @@ const scores = [
     username: "user4",
     rank: 4,
     score: 70,
-    type: 'tetris',
+    type: "tetris",
     date_created: null,
     date_updated: null,
   },
@@ -49,7 +53,7 @@ const scores = [
     username: "user5",
     rank: 5,
     score: 60,
-    type: 'tetris',
+    type: "tetris",
     date_created: null,
     date_updated: null,
   },
@@ -71,14 +75,21 @@ app.post("/", (req, res) => {
     username: `user${scores.length + 1}`,
     rank: scores.length + 1, // TODO how optimizing rearrange the rank on  every score add /update?
     score: body.score,
-    type: 'tetris',
+    type: "tetris",
     date_created: null,
     date_updated: null,
   };
-  scores.push(score)
+  scores.push(score);
   res.send(scores);
 });
 
 // const port = process.env.PORT || 3002;
 const port = 3002;
-app.listen(port, () => console.log(`Running on port:: ${port}`));
+
+io.on("connection", (socket) => {
+  console.log('==SOCKETID::==',socket.id);
+  socket.on('hello', res=>{console.log('sressse')})
+  // socket.emit('emiiting')
+});
+
+server.listen(port, () => console.log(`Running on port:: ${port}`));

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import socketIOClient from "socket.io-client";
 
 import "./styles/landing.css";
 
@@ -19,6 +20,8 @@ const mockTabData = {
   },
 };
 
+const tempEp = "https://localhost:3002/"
+
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +38,14 @@ class LandingPage extends Component {
       };
     }
     this.state = { ...tabData, showModal: false };
+  }
+
+  componentDidMount() {
+    const socket = socketIOClient(tempEp);
+    console.log('????')
+    socket.on("connection", (data) => {
+      console.log('socket res',data)
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -70,7 +81,7 @@ class LandingPage extends Component {
     // TODO: figure out optimistic loading here - using context?
     this.toggleModal(false);
     axios
-      .post("http://localhost:3002/", data)
+      .post(tempEp, data)
       .then(function (response) {
         // handle success
         console.log("score update sucesss:", response);
