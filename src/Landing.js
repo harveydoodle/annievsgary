@@ -66,16 +66,18 @@ class LandingPage extends Component {
     );
   };
   handleAddScore = (data) => {
+    // TODO REFACTOR THIS OUT TO A MODAL HOC
+    // TODO: figure out optimistic loading here - using context?
     this.toggleModal(false);
     axios
-      .get("http://localhost:3000/")
+      .post("http://localhost:3002/", data)
       .then(function (response) {
         // handle success
-        console.log('res::',response);
+        console.log("score update sucesss:", response);
       })
       .catch(function (error) {
         // handle error
-        console.log('err',error);
+        console.log("err", error);
       })
       .then(function () {
         // always executed
