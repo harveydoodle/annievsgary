@@ -7,15 +7,17 @@
   background-color: #ffffff;
   box-sizing: border-box;
   width: 820px;
-  max-width:100%;
+  max-width: 100%;
   min-height: 85vh;
   padding: 50px;
 }
 .ranking-header {
+  text-align: left;
   display: flex;
   flex-direction: row;
   flex: 1;
   justify-content: space-between;
-  align-items: center;
-  max-width:100%;
+  align-items: flex-start;
+  align-content: flex-start;
+  max-width: 100%;
 }

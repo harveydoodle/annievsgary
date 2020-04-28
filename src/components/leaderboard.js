@@ -15,18 +15,18 @@ const LeaderboardComponent = (props) => {
       <table>
         <thead>
           <tr className="ranking-header">
-            <th>Rank</th>
-            <th>Username</th>
-            <th>Top Score</th>
+            <th className="flex-1">Rank</th>
+            <th className="flex-4">Username</th>
+            <th className="flex-1">Top Score</th>
           </tr>
         </thead>
         <tbody>
           {map(data, (each, id) => (
-            <UserRanking {...each}/>
+            <UserRanking {...each} />
           ))}
         </tbody>
       </table>
-        <span onClick={() => props.toggleModal(true)}>Add a new score</span>
+      <span onClick={() => props.toggleModal(true)}>Add a new score</span>
     </div>
   );
 };

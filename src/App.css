@@ -41,7 +41,13 @@
   }
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 10px 0;
   font-weight: 400;
 }
@@ -50,11 +56,9 @@ h1 {
   font-size: 4rem;
 }
 
-
 h2 {
   font-size: 1.75rem;
 }
-
 
 h3 {
   font-size: 1.5rem;
@@ -66,4 +70,34 @@ p {
 
 span {
   font-size: 1.25rem;
+}
+
+th,
+td {
+  font-size: 1.25rem;
+}
+
+.flex-1 {
+  display: flex;
+  flex: 1;
+}
+
+.flex-2 {
+  display: flex;
+  flex: 2;
+}
+
+.flex-3 {
+  display: flex;
+  flex: 3;
+}
+
+.flex-4 {
+  display: flex;
+  flex: 4;
+}
+
+.flex-5 {
+  display: flex;
+  flex: 5;
 }
