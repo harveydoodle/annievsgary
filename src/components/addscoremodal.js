@@ -5,12 +5,30 @@ import Dropdown from "./dropdown";
 
 import "../styles/addscoremodal.css";
 
+//TODO: refactor
+const invalidName = (value) => {
+  if (!value || value.length < 3) {
+    return true;
+  }
+  return false;
+};
+const invalidScore = (value) => {
+  if (!value || isNaN(parseInt(value, 10))) {
+    return true;
+  }
+  return false;
+};
+
 const AddScoreModal = ({ handleClose, show, handleSubmit }) => {
   const [username, setUsername] = useState("");
   const [score, setScore] = useState("");
   const [type, setType] = useState("Skribbl");
+  const invalid = invalidName(username) || invalidScore(score);
   const onSubmit = (e) => {
     e.preventDefault();
+    if (invalid) {
+      return null;
+    }
     const time = new Date(); // TODO - update for BE?
     handleSubmit({ username, score, type, time });
   };
@@ -18,9 +36,9 @@ const AddScoreModal = ({ handleClose, show, handleSubmit }) => {
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <a onClick={handleClose} className="close-btn">
+        <button onClick={handleClose} className="close-btn">
           X
-        </a>
+        </button>
         <form onSubmit={onSubmit} className="form">
           <p>ADD NEW SCORE</p>
           <Dropdown
@@ -30,9 +48,17 @@ const AddScoreModal = ({ handleClose, show, handleSubmit }) => {
               setType(value);
             }}
           />
-          <TextInput value={username} onChange={(val) => setUsername(val)} />
-          <TextInput value={score} onChange={(val) => setScore(val)} />
-          <input type="submit" value="Submit" />
+          <TextInput
+            title="username"
+            value={username}
+            onChange={(val) => setUsername(val)}
+          />
+          <TextInput
+            title="score"
+            value={score}
+            onChange={(val) => setScore(val)}
+          />
+          <input type="submit" value="Submit" className="add-button" />
         </form>
       </section>
     </div>

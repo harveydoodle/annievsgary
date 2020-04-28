@@ -21,3 +21,10 @@
   align-content: flex-start;
   max-width: 100%;
 }
+
+.add-button {
+  padding: 10px;
+  width: 200px;
+  align-self: center;
+  margin: 40px 0;
+}

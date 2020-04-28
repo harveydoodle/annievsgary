@@ -26,7 +26,9 @@ const LeaderboardComponent = (props) => {
           ))}
         </tbody>
       </table>
-      <span onClick={() => props.toggleModal(true)}>Add a new score</span>
+      <button className="add-button" onClick={() => props.toggleModal(true)}>
+        Add a new score
+      </button>
     </div>
   );
 };

@@ -72,6 +72,10 @@ span {
   font-size: 1.25rem;
 }
 
+button {
+  font-size: 1rem;
+}
+
 th,
 td {
   font-size: 1.25rem;
@@ -100,4 +104,12 @@ td {
 .flex-5 {
   display: flex;
   flex: 5;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }

@@ -12,5 +12,9 @@
   font-size: 16px;
   width: 300px;
   max-width: 100%;
-  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.textinput-wrapper {
+  margin-bottom: 20px;
 }
