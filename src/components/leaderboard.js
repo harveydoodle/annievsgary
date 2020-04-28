@@ -7,25 +7,26 @@ import UserRanking from "./userranking";
 import "../styles/leaderboard.css";
 
 const LeaderboardComponent = (props) => {
-  const { scoreData } = props;
+  const { scoreData, tabData } = props;
+  const data = scoreData.filter((row) => row.type === tabData.active_tab_id);
   return (
     <div className="leaderboard-wrapper">
       <h1 style={{ textAlign: "left" }}>Leaderboard</h1>
-      <div>
-        <span className="ranking-header">
-          <h2 style={{ flex: 1 }}>Rank</h2>
-          <h2 style={{ flex: 6, textAlign: "left" }}>Username</h2>
-          <h2 style={{ flex: 2 }}>Top Score</h2>
-        </span>
-        {map(scoreData, (each, id) => (
-          <span key={id}>
-            <UserRanking {...each} />
-          </span>
-        ))}
-        <span onClick={() => props.toggleModal(true)}>
-          Add a new score
-        </span>
-      </div>
+      <table>
+        <thead>
+          <tr className="ranking-header">
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Top Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {map(data, (each, id) => (
+            <UserRanking {...each}/>
+          ))}
+        </tbody>
+      </table>
+        <span onClick={() => props.toggleModal(true)}>Add a new score</span>
     </div>
   );
 };
