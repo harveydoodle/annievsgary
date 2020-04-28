@@ -42,7 +42,6 @@ class LandingPage extends Component {
 
   componentDidMount() {
     const socket = socketIOClient(tempEp);
-    console.log('????')
     socket.on("connection", (data) => {
       console.log('socket res',data)
     });

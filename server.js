@@ -1,8 +1,14 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const http = require("http");
-const socketIo = require("socket.io")
+const socketIo = require("socket.io");
+
+const db = require("./queries");
+
+const port = process.env.PORT || 3002;
+// const port = 3002;
 
 app.use(express.urlencoded());
 app.use(cors());
@@ -59,36 +65,40 @@ const scores = [
   },
 ];
 
-app.get("/", (req, res) => {
-  res.send(scores);
-});
+// app.get("/", (req, res) => {
+//   // res.send(scores);
+//   res.json({ info: 'Node.js, Express, and Postgres API' })
+// });
 
-app.post("/", (req, res) => {
-  // TODO: what validations do I need?
-  const { body } = req;
-  if (!body.username) {
-    return res.status(400).send("Missing username");
-  }
+// app.post("/", (req, res) => {
+//   // TODO: what validations do I need?
+//   const { body } = req;
+//   if (!body.username) {
+//     return res.status(400).send("Missing username");
+//   }
 
-  const score = {
-    id: scores.length + 1,
-    username: `user${scores.length + 1}`,
-    rank: scores.length + 1, // TODO how optimizing rearrange the rank on  every score add /update?
-    score: body.score,
-    type: "tetris",
-    date_created: null,
-    date_updated: null,
-  };
-  scores.push(score);
-  res.send(scores);
-});
+//   const score = {
+//     id: scores.length + 1,
+//     username: `user${scores.length + 1}`,
+//     rank: scores.length + 1, // TODO how optimizing rearrange the rank on  every score add /update?
+//     score: body.score,
+//     type: "tetris",
+//     date_created: null,
+//     date_updated: null,
+//   };
+//   scores.push(score);
+//   res.send(scores);
+// });
 
-// const port = process.env.PORT || 3002;
-const port = 3002;
+app.get("/", db.getScores);
+
+app.post("/", db.createScore);
 
 io.on("connection", (socket) => {
-  console.log('==SOCKETID::==',socket.id);
-  socket.on('hello', res=>{console.log('sressse')})
+  console.log("==SOCKETID::==", socket.id);
+  socket.on("hello", (res) => {
+    console.log("sressse");
+  });
   // socket.emit('emiiting')
 });
 
