@@ -23,14 +23,12 @@ client
 // });
 
 const getScores = (request, response) => {
-  client.query("SELECT * from scores", (error, results) => {
-    console.log('uh',error,results)
-    if (error) {
-      throw error;
-    }
-    response.status(200).json(results.rows);
-    client.end();
-  });
+  client
+    .query("SELECT * from scores_table")
+    .then((res) => {
+      response.status(200).json(res.rows);
+    })
+    .catch((e) => console.error(e.stack));
 };
 
 const createScore = (request, response) => {

@@ -8,7 +8,7 @@ import "../styles/leaderboard.css";
 
 const LeaderboardComponent = (props) => {
   const { scoreData, tabData } = props;
-  const data = scoreData.filter((row) => row.type === tabData.active_tab_id);
+  const data = scoreData.filter((row) => row.game_type === tabData.active_tab_id);
   return (
     <div className="leaderboard-wrapper">
       <h1 style={{ textAlign: "left" }}>Leaderboard</h1>
