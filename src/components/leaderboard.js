@@ -7,6 +7,7 @@ import UserRanking from "./userranking";
 import "../styles/leaderboard.css";
 
 const LeaderboardComponent = (props) => {
+  console.log(props)
   const { scoreData, tabData } = props;
   const data = scoreData.filter((row) => row.game_type === tabData.active_tab_id);
   return (

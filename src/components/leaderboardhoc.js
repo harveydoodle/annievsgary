@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import ScoreContext from "../context/scoreContext";
+
 function withComponentAPI(WrappedComponent) {
   return class extends Component {
     constructor(props) {
@@ -41,7 +43,14 @@ function withComponentAPI(WrappedComponent) {
         tabData,
         toggleModal,
       };
-      return <WrappedComponent {...passedProps} />;
+
+      return (
+        <ScoreContext>
+          {(scoreContext) => (
+            <WrappedComponent {...passedProps} {...scoreContext} />
+          )}
+        </ScoreContext>
+      );
     }
   };
 }
