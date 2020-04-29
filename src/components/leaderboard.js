@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { map } from "lodash";
+
+import ScoreContext from "../context/scoreContext";
 
 import composedHOC from "./leaderboardhoc";
 import UserRanking from "./userranking";
@@ -7,9 +9,11 @@ import UserRanking from "./userranking";
 import "../styles/leaderboard.css";
 
 const LeaderboardComponent = (props) => {
-  console.log(props)
+  const scoreContext = useContext(ScoreContext);
   const { scoreData, tabData } = props;
-  const data = scoreData.filter((row) => row.game_type === tabData.active_tab_id);
+  const data = scoreData.filter(
+    (row) => row.game_type === tabData.active_tab_id
+  );
   return (
     <div className="leaderboard-wrapper">
       <h1 style={{ textAlign: "left" }}>Leaderboard</h1>

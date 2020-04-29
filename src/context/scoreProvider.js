@@ -14,6 +14,9 @@ class ScoreProvider extends Component {
           addScore: (data) => {
             console.log(data);
           },
+          getScores: (data) => {
+            console.log(data);
+          },
         }}
       >
         {this.props.children}
