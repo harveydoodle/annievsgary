@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import { map } from "lodash";
 
 import ScoreContext from "../context/scoreContext";
@@ -27,7 +27,9 @@ const LeaderboardComponent = (props) => {
         </thead>
         <tbody>
           {map(data, (each, id) => (
-            <UserRanking {...each} />
+            <Fragment key={id}>
+              <UserRanking {...each} />
+            </Fragment>
           ))}
         </tbody>
       </table>
