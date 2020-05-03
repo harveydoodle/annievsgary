@@ -13,7 +13,7 @@ function withComponentAPI(WrappedComponent) {
 
     componentDidMount() {
       // fetch data...
-      fetch('score/scores').then(res=>{console.log(res)})
+      // fetch('score/scores').then(res=>{console.log(res)})
       // axios
       //   .get("mongodb://testuser1:test123@ds029456.mlab.com:29456/heroku_wd5q1m27/scores")
       //   .then(({ data }) => {
