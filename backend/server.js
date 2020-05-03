@@ -5,7 +5,7 @@ const http = require("http");
 const mongoose = require("mongoose");
 require("dotenv").config();
 // app.use(express.urlencoded());
-// app.use(cors());
+app.use(cors());
 
 const port = process.env.PORT || 5000;
 const scoreRoutes = require("./routes/scoresRoutes");

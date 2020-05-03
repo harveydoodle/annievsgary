@@ -12,7 +12,7 @@ const LeaderboardComponent = (props) => {
   const scoreContext = useContext(ScoreContext);
   const { scoreData, tabData } = props;
   const data = scoreData.filter(
-    (row) => row.game_type === tabData.active_tab_id
+    (row) => row.type === tabData.active_tab_id
   );
   return (
     <div className="leaderboard-wrapper">

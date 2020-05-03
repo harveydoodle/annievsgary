@@ -41,10 +41,10 @@ class LandingPage extends Component {
   }
 
   componentDidMount() {
-    const socket = socketIOClient(tempEp);
-    socket.on("connection", (data) => {
-      console.log('socket res',data)
-    });
+    // const socket = socketIOClient(tempEp);
+    // socket.on("connection", (data) => {
+    //   console.log('socket res',data)
+    // });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -79,19 +79,19 @@ class LandingPage extends Component {
     // TODO REFACTOR THIS OUT TO A MODAL HOC
     // TODO: figure out optimistic loading here - using context?
     this.toggleModal(false);
-    axios
-      .post(tempEp, data)
-      .then(function (response) {
-        // handle success
-        console.log("score update sucesss:", response);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log("err", error);
-      })
-      .then(function () {
-        // always executed
-      });
+    // axios
+    //   .post(tempEp, data)
+    //   .then(function (response) {
+    //     // handle success
+    //     console.log("score update sucesss:", response);
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     console.log("err", error);
+    //   })
+    //   .then(function () {
+    //     // always executed
+    //   });
   };
   render() {
     return (

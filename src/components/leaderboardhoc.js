@@ -13,20 +13,21 @@ function withComponentAPI(WrappedComponent) {
 
     componentDidMount() {
       // fetch data...
-      axios
-        .get("http://localhost:5000/")
-        .then(({ data }) => {
-          this.setState({
-            scoreData: data,
-          });
-        })
-        .catch((error) => {
-          // handle error
-          // TODO: handle error states
-        })
-        .then(() => {
-          // always executed
-        });
+      fetch('score/scores').then(res=>{console.log(res)})
+      // axios
+      //   .get("mongodb://testuser1:test123@ds029456.mlab.com:29456/heroku_wd5q1m27/scores")
+      //   .then(({ data }) => {
+      //     this.setState({
+      //       scoreData: data,
+      //     });
+      //   })
+      //   .catch((error) => {
+      //     // handle error
+      //     // TODO: handle error states
+      //   })
+      //   .then(() => {
+      //     // always executed
+      //   });
     }
 
     componentDidUpdate(prevProps) {
