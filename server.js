@@ -8,7 +8,7 @@ require("dotenv").config();
 app.use(cors());
 
 const port = process.env.PORT || 5000;
-const scoreRoutes = require("../backend/routes/scoresRoutes");
+const scoreRoutes = require("./backend/routes/scoresRoutes");
 
 // Middleware
 app.use(express.json());
