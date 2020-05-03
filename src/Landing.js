@@ -20,7 +20,7 @@ const mockTabData = {
   },
 };
 
-const tempEp = "https://localhost:3002/"
+const tempEp = "https://localhost:5000/"
 
 class LandingPage extends Component {
   constructor(props) {

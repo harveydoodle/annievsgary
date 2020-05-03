@@ -14,7 +14,7 @@ function withComponentAPI(WrappedComponent) {
     componentDidMount() {
       // fetch data...
       axios
-        .get("http://localhost:3002/")
+        .get("http://localhost:5000/")
         .then(({ data }) => {
           this.setState({
             scoreData: data,
