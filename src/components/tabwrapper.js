@@ -27,7 +27,7 @@ class Tabs extends Component {
               className={`individual-tab-wrapper ${
                 isLeftEdge && "tab-left-edge"
               } ${isRightEdge && "tab-right-edge"} `}
-              style={isActive ? { fontWeight: "bold" } : null}
+              style={isActive ? { fontStyle: "italic" } : null}
               onClick={() => handleTabSwitch(each.key)}
             >
               <h3 style={{ margin: 0 }}>{each.title} </h3>

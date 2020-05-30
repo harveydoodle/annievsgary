@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
-import socketIOClient from "socket.io-client";
 
 import "./styles/landing.css";
 
@@ -20,8 +18,6 @@ const mockTabData = {
   },
 };
 
-const tempEp = "https://localhost:5000/"
-
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -38,13 +34,6 @@ class LandingPage extends Component {
       };
     }
     this.state = { ...tabData, showModal: false };
-  }
-
-  componentDidMount() {
-    // const socket = socketIOClient(tempEp);
-    // socket.on("connection", (data) => {
-    //   console.log('socket res',data)
-    // });
   }
 
   componentDidUpdate(prevProps, prevState) {

@@ -4,7 +4,7 @@ const router = express.Router();
 const Score = require("../models/Score");
 
 // GET ALL SCORES
-router.get("/", (req, res) => {
+router.get("/scores", (req, res) => {
   Score.find()
     .then((data) => {
       res.json(data);
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 });
 
 // CREATE NEW SCORE
-router.post("/", (req, res) => {
+router.post("/scores", (req, res) => {
   const score = new Score({
     username: req.body.username,
     score: req.body.score,
@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
 });
 
 // UPDATE A SCORE
-router.patch("/:scoreId", (req, res) => {
+router.patch("/score/:scoreId", (req, res) => {
   Score
     .updateOne(
       { _id: req.params.scoreId },

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import scoreService from "../services/scoreService";
 
 function withComponentAPI(WrappedComponent) {
   return class extends Component {
@@ -12,27 +12,15 @@ function withComponentAPI(WrappedComponent) {
     }
 
     componentDidMount() {
-      // fetch data...
-      // fetch('score/scores').then(res=>{console.log(res)})
-      // axios
-      //   .get("mongodb://testuser1:test123@ds029456.mlab.com:29456/heroku_wd5q1m27/scores")
-      //   .then(({ data }) => {
-      //     this.setState({
-      //       scoreData: data,
-      //     });
-      //   })
-      //   .catch((error) => {
-      //     // handle error
-      //     // TODO: handle error states
-      //   })
-      //   .then(() => {
-      //     // always executed
-      //   });
+      this.getProducts();
     }
 
-    componentDidUpdate(prevProps) {
-      /// update data..
-    }
+    getProducts = async () => {
+      let scoreData = await scoreService.fetchAllScores();
+      this.setState({
+        scoreData,
+      })
+    };
 
     render() {
       const { scoreData } = this.state;

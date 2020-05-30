@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const path = require('path');
 const cors = require("cors");
-const http = require("http");
 const mongoose = require("mongoose");
+
 require("dotenv").config();
 // app.use(express.urlencoded());
 app.use(cors());
