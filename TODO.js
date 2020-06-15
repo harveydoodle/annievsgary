@@ -5,3 +5,4 @@
 // set up auth0
 // redesign
 // find appropriate UX good practices
+// check context caveat to cause unneeded rerenders
