@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import ScoreProvider from "./context/scoreProvider";
+import TabProvider from "./context/tabProvider";
 
 import "./App.css";
 
@@ -14,13 +15,15 @@ class App extends Component {
   render() {
     return (
       <ScoreProvider>
-        <Router>
-          <Switch>
-            <Route history={customHistory} path="/">
-              <Landing />
-            </Route>
-          </Switch>
-        </Router>
+        <TabProvider>
+          <Router>
+            <Switch>
+              <Route history={customHistory} path="/">
+                <Landing />
+              </Route>
+            </Switch>
+          </Router>
+        </TabProvider>
       </ScoreProvider>
     );
   }

@@ -17,10 +17,10 @@ class Tabs extends Component {
     const { active_tab_id } = tabData;
     return (
       <div className="tabs-wrapper">
-        {map(tabData.tabs, (each, id, index) => {
+        {map(tabData.tabsData, (each, id, index) => {
           const isActive = each.key === active_tab_id;
           const isLeftEdge = each.id === 1;
-          const isRightEdge = each.id === Object.keys(tabData.tabs).length;
+          const isRightEdge = each.id === Object.keys(tabData.tabsData).length;
           return (
             <span
               key={each.id}

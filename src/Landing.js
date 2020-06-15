@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 
 import "./styles/landing.css";
@@ -6,85 +6,46 @@ import "./styles/landing.css";
 import { extractUrlPath } from "./utils/navigation";
 
 import scoreService from "./services/scoreService";
+import tabContext from "./context/tabContext";
 
 import Leaderboard from "./components/leaderboard";
 import Tabs from "./components/tabwrapper";
 import Modal from "./components/addscoremodal";
 
-const mockTabData = {
-  active_tab_id: "tetris",
-  tabs: {
-    puyo: { id: 1, key: "puyo", title: "puyo puyo" },
-    tetris: { id: 2, key: "tetris", title: "tetris battle" },
-    skribbl: { id: 3, key: "skribbl", title: "skribbl.io" },
-  },
-};
-
-class LandingPage extends Component {
-  constructor(props) {
-    super(props);
-    const { location } = props;
-    // TODO: refactor out
-    let tabData = mockTabData;
+const LandingPage = ({ location, history }) => {
+  const [showModal, toggleModal] = useState(false);
+  const tabData = useContext(tabContext);
+  useEffect(() => {
     if (
       extractUrlPath(location.pathname) &&
-      extractUrlPath(location.pathname) !== mockTabData.active_tab_id
+      extractUrlPath(location.pathname) !== tabData.active_tab_id
     ) {
-      tabData = {
-        ...mockTabData,
-        active_tab_id: extractUrlPath(location.pathname),
-      };
+      tabData.setActiveTab(extractUrlPath(location.pathname));
     }
-    this.state = { ...tabData, showModal: false };
-  }
+  }, [tabData, location]);
 
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      extractUrlPath(this.props.location.pathname) &&
-      extractUrlPath(this.props.location.pathname) !== this.state.active_tab_id
-    ) {
-      let active_tab_id = extractUrlPath(this.props.location.pathname);
-      this.setState({
-        active_tab_id,
-      });
-    }
-  }
-
-  toggleModal = (val) => {
-    this.setState({
-      showModal: val,
-    });
+  const handleTabSwitch = (key) => {
+    tabData.setActiveTab(key);
+    history.push(`/${key}`);
   };
 
-  handleTabSwitch = (key) => {
-    this.setState(
-      (prevState) => {
-        return { ...prevState, active_tab_id: key };
-      },
-      () => {
-        this.props.history.push(`/${key}`);
-      }
-    );
-  };
-  handleAddScore = async (data) => {
+  const handleAddScore = async (data) => {
     // TODO REFACTOR THIS OUT TO A MODAL HOC
     // TODO: figure out optimistic loading here - using context?
-    this.toggleModal(false);
-      let newScore = await scoreService.createNewScore(data);
+    let newScore = await scoreService.createNewScore(data);
+    toggleModal(false);
   };
-  render() {
-    return (
-      <div className="landing">
-        <Tabs handleTabSwitch={this.handleTabSwitch} tabData={this.state} />
-        <Leaderboard toggleModal={this.toggleModal} tabData={this.state} />
-        <Modal
-          show={this.state.showModal}
-          handleClose={() => this.toggleModal(false)}
-          handleSubmit={(data) => this.handleAddScore(data)}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="landing">
+      <Tabs handleTabSwitch={(key) => handleTabSwitch(key)} tabData={tabData} />
+      <Leaderboard toggleModal={(val) => toggleModal(val)} tabData={tabData} />
+      <Modal
+        show={showModal}
+        handleClose={() => toggleModal(false)}
+        handleSubmit={(data) => handleAddScore(data)}
+      />
+    </div>
+  );
+};
 
 export default withRouter(LandingPage);
