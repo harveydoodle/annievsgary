@@ -17,7 +17,8 @@ app.use(express.json());
 app.use("/scores", scoreRoutes);
 
 if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('build'));
+    // app.use("/", express.static("build"));
+    app.use('/', express.static(__dirname + '/'));
 }
 app.get('*',(req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
