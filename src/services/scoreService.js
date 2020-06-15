@@ -7,4 +7,8 @@ export default {
     let res = await axios.get(`${BASE_URL}/scores`);
     return res.data || [];
   },
+  createNewScore: async (body) => {
+    let res = await axios.post(`${BASE_URL}/scores`, body);
+    return res.data || [];
+  },
 };

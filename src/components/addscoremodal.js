@@ -22,7 +22,7 @@ const invalidScore = (value) => {
 const AddScoreModal = ({ handleClose, show, handleSubmit }) => {
   const [username, setUsername] = useState("");
   const [score, setScore] = useState("");
-  const [type, setType] = useState("Skribbl");
+  const [type, setType] = useState("skribbl");
   const invalid = invalidName(username) || invalidScore(score);
   const onSubmit = (e) => {
     e.preventDefault();

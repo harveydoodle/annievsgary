@@ -5,6 +5,8 @@ import "./styles/landing.css";
 
 import { extractUrlPath } from "./utils/navigation";
 
+import scoreService from "./services/scoreService";
+
 import Leaderboard from "./components/leaderboard";
 import Tabs from "./components/tabwrapper";
 import Modal from "./components/addscoremodal";
@@ -64,23 +66,11 @@ class LandingPage extends Component {
       }
     );
   };
-  handleAddScore = (data) => {
+  handleAddScore = async (data) => {
     // TODO REFACTOR THIS OUT TO A MODAL HOC
     // TODO: figure out optimistic loading here - using context?
     this.toggleModal(false);
-    // axios
-    //   .post(tempEp, data)
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log("score update sucesss:", response);
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log("err", error);
-    //   })
-    //   .then(function () {
-    //     // always executed
-    //   });
+      let newScore = await scoreService.createNewScore(data);
   };
   render() {
     return (

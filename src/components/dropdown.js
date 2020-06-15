@@ -12,13 +12,13 @@ const Dropdown = ({ value, onChange, id }) => {
       <span className="selected-value" onClick={() => setShowOptions(!showOptions)}>{value}</span>
       {showOptions && (
         <ul className="dropdown-options-container">
-          <li onClick={() => handleOnChange("Puyo")} value="Puyo">
+          <li onClick={() => handleOnChange("puyo")} value="puyo">
             Puyo
           </li>
-          <li onClick={() => handleOnChange("Tetris")} value="Tetris">
+          <li onClick={() => handleOnChange("tetris")} value="tetris">
             Tetris
           </li>
-          <li onClick={() => handleOnChange("Skribbl")} value="Skribbl">
+          <li onClick={() => handleOnChange("skribbl")} value="skribbl">
             Skribbl
           </li>
         </ul>
