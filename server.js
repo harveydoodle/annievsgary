@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const path = require('path');
+const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -16,11 +16,11 @@ app.use(express.json());
 
 app.use("/", scoreRoutes);
 
-if(process.env.NODE_ENV === 'production'){
-    app.use("/", express.static("build"));
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static("build"));
 }
-app.get('*',(req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
 //Connect to DB

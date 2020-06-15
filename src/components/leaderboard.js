@@ -1,5 +1,5 @@
 import React, { useContext, Fragment } from "react";
-import { map } from "lodash";
+import { map, orderBy } from "lodash";
 
 import ScoreContext from "../context/scoreContext";
 
@@ -11,9 +11,8 @@ import "../styles/leaderboard.css";
 const LeaderboardComponent = (props) => {
   const scoreContext = useContext(ScoreContext);
   const { scoreData, tabData } = props;
-  const data = scoreData.filter(
-    (row) => row.type === tabData.active_tab_id
-  );
+  const data = scoreData.filter((row) => row.type === tabData.active_tab_id);
+  const orderedData = orderBy(data, "score");
   return (
     <div className="leaderboard-wrapper">
       <h1 style={{ textAlign: "left" }}>Leaderboard</h1>
@@ -26,9 +25,9 @@ const LeaderboardComponent = (props) => {
           </tr>
         </thead>
         <tbody>
-          {map(data, (each, id) => (
+          {map(orderedData, (each, id) => (
             <Fragment key={id}>
-              <UserRanking {...each} />
+              <UserRanking fe_rank={id} {...each} />
             </Fragment>
           ))}
         </tbody>
