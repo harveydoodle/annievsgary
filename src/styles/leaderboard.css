@@ -1,16 +1,35 @@
 .leaderboard-wrapper {
   display: flex;
   flex: 1;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
-  /* border: 1px solid black; */
-  background-color: #ffffff;
+  background-color: lightgray;
   box-sizing: border-box;
   width: 820px;
   max-width: 100%;
-  min-height: 85vh;
-  padding: 50px;
+  height: 500px;
 }
+
+.leaderboard-menu {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: green;
+}
+
+.leaderboard-graph {
+  display: flex;
+  flex: 2;
+  justify-content: space-evenly;
+  background-color: beige;
+}
+
+.leaderboard-graph-bar {
+  display: flex;
+  flex: 1;
+  background-color: lightcoral;
+}
+
 .ranking-header {
   text-align: left;
   display: flex;
