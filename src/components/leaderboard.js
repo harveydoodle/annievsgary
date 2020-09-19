@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
-import { map, orderBy } from "lodash";
-
-import ScoreContext from "../context/scoreContext";
+import React from "react";
 
 import composedHOC from "./leaderboardhoc";
 
 import "../styles/leaderboard.css";
 
 const LeaderboardComponent = (props) => {
-  const scoreContext = useContext(ScoreContext);
   const { scoreData, tabData = {} } = props;
+  console.log('tabData',tabData)
   const data = scoreData.filter((row) => row.type === "puyo");
+  console.log(scoreData);
+  const totalScore = data?.reduce((acc, obj) => acc + obj.score, 0);
   const options = ["puyo", "tetris", "battleship"];
   return (
     <div className="leaderboard-wrapper">
@@ -22,10 +21,17 @@ const LeaderboardComponent = (props) => {
         ))}
       </div>
       <div className="leaderboard-graph">
-        {scoreData.map((user) => {
-          const height = 800 * 0.5;
+        {data.map((user) => {
+          console.log(user.score, totalScore);
+          const height = 350 * (user.score / totalScore);
+          const randomColor = `#${Math.floor(Math.random() * 16777215).toString(
+            16
+          )}`;
           return (
-            <div className="leaderboard-graph-bar" style={{ height }}>
+            <div
+              className="leaderboard-graph-bar"
+              style={{ height, backgroundColor: randomColor }}
+            >
               {user.score}
             </div>
           );
