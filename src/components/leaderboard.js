@@ -5,8 +5,7 @@ import composedHOC from "./leaderboardhoc";
 import "../styles/leaderboard.css";
 
 const LeaderboardComponent = (props) => {
-  const { scoreData, tabData = {} } = props;
-  console.log('tabData',tabData)
+  const { scoreData } = props;
   const data = scoreData.filter((row) => row.type === "puyo");
   console.log(scoreData);
   const totalScore = data?.reduce((acc, obj) => acc + obj.score, 0);

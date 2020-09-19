@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 
 import "./styles/landing.css";
@@ -6,7 +6,6 @@ import "./styles/landing.css";
 import scoreService from "./services/scoreService";
 
 import Leaderboard from "./components/leaderboard";
-import Tabs from "./components/tabwrapper";
 import Modal from "./components/addscoremodal";
 
 const LandingPage = ({ location, history }) => {
@@ -19,7 +18,7 @@ const LandingPage = ({ location, history }) => {
   };
   return (
     <div className="landing">
-      <Leaderboard toggleModal={(val) => toggleModal(val)} tabData={{}} />
+      <Leaderboard toggleModal={(val) => toggleModal(val)} />
       <Modal
         show={showModal}
         handleClose={() => toggleModal(false)}

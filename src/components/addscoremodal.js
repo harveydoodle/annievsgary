@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 
-import tabContext from "../context/tabContext";
 
 import TextInput from "./textinput";
 import Dropdown from "./dropdown";
@@ -25,13 +24,7 @@ const AddScoreModal = ({ handleClose, show, handleSubmit }) => {
   const [username, setUsername] = useState("");
   const [score, setScore] = useState("");
   const [type, setType] = useState("");
-  const tabData = useContext(tabContext);
 
-  useEffect(() => {
-    if (tabData.active_tab_id !== type) {
-      setType(tabData.active_tab_id);
-    }
-  }, [tabData]);
   const invalid = invalidName(username) || invalidScore(score);
   const onSubmit = (e) => {
     e.preventDefault();
