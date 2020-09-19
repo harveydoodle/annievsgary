@@ -12,6 +12,9 @@ const Dropdown = ({ value, onChange, id }) => {
       <span className="selected-value" onClick={() => setShowOptions(!showOptions)}>{value}</span>
       {showOptions && (
         <ul className="dropdown-options-container">
+          <li onClick={() => handleOnChange("all")} value="all">
+            All
+          </li>
           <li onClick={() => handleOnChange("puyo")} value="puyo">
             Puyo
           </li>
